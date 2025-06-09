@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренировки - FitClub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.3s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+                    <div class="bg-gradient-to-r from-blue-500 to-orange-500 p-2 rounded-xl">
+                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">
+                        FitClub
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium">Главная</a>
+                    <a href="trainings.html" class="text-blue-500 font-medium">Тренировки</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium">Тренеры</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium">Записаться</a>
+                    <a href="index.html#contacts" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium">Контакты</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg id="sun-icon" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="moon-icon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+
+                    <button class="hidden sm:block px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        Войти
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <svg id="menu-icon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg id="close-icon" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden border-t border-gray-200 dark:border-gray-700 py-4 hidden">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium px-2 py-1">Главная</a>
+                    <a href="trainings.html" class="text-blue-500 font-medium px-2 py-1">Тренировки</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium px-2 py-1">Тренеры</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium px-2 py-1">Записаться</a>
+                    <a href="index.html#contacts" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium px-2 py-1">Контакты</a>
+                    <button class="mx-2 mt-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        Войти
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Расписание тренировок
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                Выберите подходящую тренировку и запишитесь прямо сейчас
+            </p>
+        </div>
+
+        <!-- Фильтры -->
+        <div class="flex flex-wrap gap-2 mb-8 justify-center">
+            <button class="level-filter active px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors" data-level="Все">
+                Все
+            </button>
+            <button class="level-filter px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" data-level="Начинающий">
+                Начинающий
+            </button>
+            <button class="level-filter px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" data-level="Средний">
+                Средний
+            </button>
+            <button class="level-filter px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" data-level="Продвинутый">
+                Продвинутый
+            </button>
+        </div>
+
+        <!-- Карточки тренировок -->
+        <div id="trainings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Карточки будут добавлены через JavaScript -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Данные тренировок
+        const trainingsData = [
+            {
+                id: "1",
+                name: "Силовая тренировка",
+                time: "09:00 утра",
+                duration: "60 минут",
+                trainer: "Максим Иванов",
+                location: "Зал №1",
+                level: "Средний",
+                spotsLeft: 3,
+                maxSpots: 12,
+            },
+            {
+                id: "2",
+                name: "Йога для начинающих",
+                time: "11:00 утра",
+                duration: "45 минут",
+                trainer: "Елена Петрова",
+                location: "Студия йоги",
+                level: "Начинающий",
+                spotsLeft: 5,
+                maxSpots: 15,
+            },
+            {
+                id: "3",
+                name: "Кроссфит",
+                time: "19:00 вечера",
+                duration: "50 минут",
+                trainer: "Александр Смирнов",
+                location: "Зал №2",
+                level: "Продвинутый",
+                spotsLeft: 1,
+                maxSpots: 10,
+            },
+            {
+                id: "4",
+                name: "Пилатес",
+                time: "15:00 дня",
+                duration: "55 минут",
+                trainer: "Анна Козлова",
+                location: "Студия пилатеса",
+                level: "Средний",
+                spotsLeft: 8,
+                maxSpots: 12,
+            },
+            {
+                id: "5",
+                name: "Аквааэробика",
+                time: "10:00 утра",
+                duration: "45 минут",
+                trainer: "Мария Волкова",
+                location: "Бассейн",
+                level: "Начинающий",
+                spotsLeft: 12,
+                maxSpots: 15,
+            },
+            {
+                id: "6",
+                name: "Функциональная тренировка",
+                time: "18:00 вечера",
+                duration: "55 минут",
+                trainer: "Дмитрий Петров",
+                location: "Зал №3",
+                level: "Продвинутый",
+                spotsLeft: 0,
+                maxSpots: 8,
+            }
+        ];
+
+        function getLevelColor(level) {
+            switch (level) {
+                case "Начинающий":
+                    return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
+                case "Средний":
+                    return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
+                case "Продвинутый":
+                    return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
+                default:
+                    return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
+            }
+        }
+
+        function createTrainingCard(training) {
+            return `
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-6" data-level="${training.level}">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">${training.name}</h3>
+                        <span class="px-2 py-1 ${getLevelColor(training.level)} text-sm rounded-full">${training.level}</span>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>${training.time} • ${training.duration}</span>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>${training.location}</span>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                            </svg>
+                            <span>${training.trainer}</span>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                            <span>Свободно мест: ${training.spotsLeft}/${training.maxSpots}</span>
+                        </div>
+                    </div>
+
+                    <button class="w-full ${training.spotsLeft === 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'} text-white font-medium py-2 px-4 rounded-md transition-colors" ${training.spotsLeft === 0 ? 'disabled' : ''}>
+                        ${training.spotsLeft === 0 ? 'Мест нет' : 'Записаться'}
+                    </button>
+                </div>
+            `;
+        }
+
+        function renderTrainings(trainings) {
+            const grid = document.getElementById('trainings-grid');
+            grid.innerHTML = trainings.map(training => createTrainingCard(training)).join('');
+        }
+
+        function filterTrainings(level) {
+            const filteredTrainings = level === 'Все' 
+                ? trainingsData 
+                : trainingsData.filter(training => training.level === level);
+            
+            renderTrainings(filteredTrainings);
+        }
+
+        // Обработчики фильтров
+        document.addEventListener('DOMContentLoaded', function() {
+            // Отображаем все тренировки при загрузке
+            renderTrainings(trainingsData);
+
+            // Обработчики для фильтров
+            const filterButtons = document.querySelectorAll('.level-filter');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Убираем активный класс со всех кнопок
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                        btn.classList.add('border', 'border-gray-300', 'dark:border-gray-600', 'text-gray-700', 'dark:text-gray-300');
+                    });
+
+                    // Добавляем активный класс к выбранной кнопке
+                    this.classList.add('active', 'bg-blue-600', 'text-white');
+                    this.classList.remove('border', 'border-gray-300', 'dark:border-gray-600', 'text-gray-700', 'dark:text-gray-300');
+
+                    // Фильтруем тренировки
+                    const level = this.dataset.level;
+                    filterTrainings(level);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

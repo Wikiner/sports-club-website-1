@@ -1,0 +1,114 @@
+/* Дополнительные стили и анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Плавная прокрутка */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Скрыть скроллбар для горизонтального скролла */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Стили для темной темы */
+.dark {
+  color-scheme: dark;
+}
+
+/* Переходы для плавного переключения темы */
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Дополнительные утилиты */
+.container {
+  max-width: 1200px;
+}
+
+/* Стили для кнопок фильтров */
+.level-filter.active {
+  background-color: rgb(37 99 235);
+  color: white;
+  border-color: rgb(37 99 235);
+}
+
+/* Респонсивность для мобильных устройств */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .text-4xl {
+    font-size: 2rem;
+  }
+
+  .text-6xl {
+    font-size: 3rem;
+  }
+}
+
+/* Улучшения для доступности */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Стили для фокуса */
+button:focus,
+a:focus {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 2px;
+}
+
+/* Улучшения для печати */
+@media print {
+  header,
+  footer {
+    display: none;
+  }
+
+  .container {
+    max-width: none;
+  }
+}
