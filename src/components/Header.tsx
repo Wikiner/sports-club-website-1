@@ -114,3 +114,5 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
 };
 
 export default Header;
+
+export { Header };
