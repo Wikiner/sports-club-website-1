@@ -49,11 +49,20 @@
                     <a href="contacts.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium">Контакты</a>
                 </nav>
 
-                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                    <svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                </button>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg id="sun-icon" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="moon-icon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+
+                    <a href="login.html" class="hidden sm:block px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        Личный кабинет
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -65,117 +74,192 @@
                 Наши тренеры
             </h1>
             <p class="text-xl text-gray-600 dark:text-gray-300">
-                Профессиональные инструкторы для достижения ваших целей
+                Профессиональные тренеры с многолетним опытом
             </p>
         </div>
 
+        <!-- Filters -->
+        <div class="flex justify-center mb-8">
+            <div class="flex flex-wrap gap-2">
+                <button class="level-filter active px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" data-filter="all">
+                    Все тренеры
+                </button>
+                <button class="level-filter px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" data-filter="fitness">
+                    Фитнес
+                </button>
+                <button class="level-filter px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" data-filter="yoga">
+                    Йога
+                </button>
+                <button class="level-filter px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" data-filter="crossfit">
+                    Кроссфит
+                </button>
+                <button class="level-filter px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" data-filter="pilates">
+                    Пилатес
+                </button>
+            </div>
+        </div>
+
+        <!-- Trainers Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Тренер 1 -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow text-center">
-                <div class="mb-4">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop" 
-                         alt="Максим Иванов" 
-                         class="w-24 h-24 rounded-full object-cover mx-auto">
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Максим Иванов</h3>
-                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm px-3 py-1 rounded-full">
-                    Силовые тренировки
-                </span>
-                
-                <div class="mt-4 space-y-2">
-                    <div class="flex items-center justify-center gap-1">
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <span class="font-medium">4.9</span>
+            <!-- Trainer 1 -->
+            <div class="trainer-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="fitness crossfit">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=face" alt="Максим Иванов" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Максим Иванов</h3>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full">Силовые тренировки</span>
+                        <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full">Кроссфит</span>
                     </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Мастер спорта по пауэрлифтингу
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Опыт работы 8 лет. Специализируется на силовых тренировках и функциональном тренинге. Мастер спорта по пауэрлифтингу.
                     </p>
-                    
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Опыт: 8 лет
-                    </p>
-                </div>
-                
-                <div class="mt-6 flex gap-2">
-                    <button class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        Записаться
-                    </button>
-                    <button class="flex-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm font-medium py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                        </svg>
-                        Написать
-                    </button>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        ⭐ Рейтинг: 4.9/5 • 👥 150+ клиентов
+                    </div>
+                    <a href="booking.html?trainer=maxim" class="w-full block text-center bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Записаться к тренеру
+                    </a>
                 </div>
             </div>
 
-            <!-- Тренер 2 -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow text-center">
-                <div class="mb-4">
-                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=300&fit=crop" 
-                         alt="Елена Петрова" 
-                         class="w-24 h-24 rounded-full object-cover mx-auto">
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Елена Петрова</h3>
-                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm px-3 py-1 rounded-full">
-                    Йога и растяжка
-                </span>
-                
-                <div class="mt-4 space-y-2">
-                    <div class="flex items-center justify-center gap-1">
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <span class="font-medium">4.8</span>
+            <!-- Trainer 2 -->
+            <div class="trainer-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="yoga pilates">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=face" alt="Елена Петрова" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Елена Петрова</h3>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full">Йога</span>
+                        <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full">Пилатес</span>
                     </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Сертифицированный инструктор хатха-йоги
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Сертифицированный инструктор йоги с 6-летним опытом. Специализируется на хатха-йоге и пилатесе для начинающих.
                     </p>
-                    
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Опыт: 6 лет
-                    </p>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        ⭐ Рейтинг: 4.8/5 • 👥 200+ клиентов
+                    </div>
+                    <a href="booking.html?trainer=elena" class="w-full block text-center bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Записаться к тренеру
+                    </a>
                 </div>
-                
-                <div class="mt-6 flex gap-2">
-                    <button class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        Записаться
-                    </button>
-                    <button class="flex-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm font-medium py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                        </svg>
-                        Написать
-                    </button>
+            </div>
+
+            <!-- Trainer 3 -->
+            <div class="trainer-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="crossfit fitness">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop&crop=face" alt="Александр Смирнов" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Александр Смирнов</h3>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full">Кроссфит</span>
+                        <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded-full">Функциональный тренинг</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Тренер по кроссфиту уровня CF-L2. 5 лет опыта работы. Специализируется на высокоинтенсивных тренировках.
+                    </p>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        ⭐ Рейтинг: 4.9/5 • 👥 120+ клиентов
+                    </div>
+                    <a href="booking.html?trainer=alexander" class="w-full block text-center bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Записаться к тренеру
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trainer 4 -->
+            <div class="trainer-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="pilates fitness">
+                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&h=300&fit=crop&crop=face" alt="Анна Козлова" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Анна Козлова</h3>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full">Пилатес</span>
+                        <span class="px-2 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 text-xs rounded-full">Стретчинг</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Мастер-тренер по пилатесу с международной сертификацией. 7 лет опыта. Специализируется на восстановительных тренировках.
+                    </p>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        ⭐ Рейтинг: 4.8/5 • 👥 180+ клиентов
+                    </div>
+                    <a href="booking.html?trainer=anna" class="w-full block text-center bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Записаться к тренеру
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trainer 5 -->
+            <div class="trainer-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="fitness">
+                <img src="https://images.unsplash.com/photo-1567013127542-490d757e51cd?w=400&h=300&fit=crop&crop=face" alt="Дмитрий Волков" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Дмитрий Волков</h3>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full">Бодибилдинг</span>
+                        <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded-full">Питание</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Персональный тренер и нутрициолог. 10 лет опыта. Специализируется на наборе мышечной массы и коррекции фигуры.
+                    </p>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        ⭐ Рейтинг: 4.9/5 • 👥 90+ клиентов
+                    </div>
+                    <a href="booking.html?trainer=dmitry" class="w-full block text-center bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Записаться к тренеру
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trainer 6 -->
+            <div class="trainer-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="yoga">
+                <img src="https://images.unsplash.com/photo-1506629905607-61e8dc17a146?w=400&h=300&fit=crop&crop=face" alt="София Белова" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">София Белова</h3>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full">Аштанга йога</span>
+                        <span class="px-2 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-xs rounded-full">Медитация</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Сертифицированный преподаватель аштанга йоги. 4 года опыта. Проводила курсы в Индии и Таиланде.
+                    </p>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        ⭐ Рейтинг: 4.7/5 • 👥 75+ клиентов
+                    </div>
+                    <a href="booking.html?trainer=sofia" class="w-full block text-center bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Записаться к тренеру
+                    </a>
                 </div>
             </div>
         </div>
     </main>
 
+    <script src="script.js"></script>
     <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.level-filter');
+            const trainerCards = document.querySelectorAll('.trainer-card');
 
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active state
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter cards
+                    trainerCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            const categories = card.getAttribute('data-category');
+                            if (categories && categories.includes(filter)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
         });
-
-        // Load saved theme
-        if (localStorage.getItem('theme') === 'dark') {
-            html.classList.add('dark');
-        }
     </script>
 </body>
 </html>

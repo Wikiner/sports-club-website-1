@@ -104,9 +104,30 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(el);
   });
 
+  // Set minimum date for date input
+  const dateInput = document.querySelector('input[type="date"]');
+  if (dateInput) {
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.min = today;
+  }
+
+  // Form submission handling
+  const form = document.getElementById("booking-form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      // Simulate booking
+      alert("Booking submitted successfully!");
+    });
+  }
+
   // Обработчики для кнопок "Записаться"
   document.addEventListener("click", function (event) {
-    if (event.target.textContent === "Записаться") {
+    if (event.target.textContent.trim() === "Записаться") {
       event.preventDefault();
       showBookingModal();
     }
