@@ -105,9 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Обработчики для кнопок "Записаться"
-  const enrollButtons = document.querySelectorAll(
-    'button:contains("Записаться")',
-  );
   document.addEventListener("click", function (event) {
     if (event.target.textContent === "Записаться") {
       event.preventDefault();
