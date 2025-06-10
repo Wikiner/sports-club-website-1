@@ -121,8 +121,45 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = Object.fromEntries(formData);
 
       // Simulate booking
-      alert("Booking submitted successfully!");
+      alert(
+        `Спасибо за заявку, ${data.name}!\n\nВаша запись:\n• Тренировка: ${data["training-type"]}\n• Тренер: ${data.trainer}\n• Дата: ${data.date}\n• Время: ${data.time}\n\nМы свяжемся с вами в ближайшее время для подтверждения.`,
+      );
+
+      form.reset();
     });
+
+    // Quick booking buttons
+    document.querySelectorAll(".quick-book").forEach((button) => {
+      button.addEventListener("click", function () {
+        const trainer = this.dataset.trainer;
+        const type = this.dataset.type;
+        const time = this.dataset.time;
+
+        // Pre-fill form
+        document.getElementById("training-type").value = type;
+        document.getElementById("trainer").value = trainer;
+        document.getElementById("time").value = time;
+
+        // Set date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById("date").value = tomorrow
+          .toISOString()
+          .split("T")[0];
+
+        // Scroll to form
+        document
+          .getElementById("booking-form")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    // URL parameters handling
+    const urlParams = new URLSearchParams(window.location.search);
+    const trainerParam = urlParams.get("trainer");
+    if (trainerParam) {
+      document.getElementById("trainer").value = trainerParam;
+    }
   }
 
   // Обработчики для кнопок "Записаться"
